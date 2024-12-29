@@ -12,7 +12,7 @@ const Manager = () => {
     const [passwordArray, setpasswordArray] = useState([])
 
     const getPasswords = async () => {
-        let req = await fetch('http://localhost:3000/')
+        let req = await fetch('https://pass-op-mongo-api.vercel.app/')
         let passwords = await req.json()
         console.log(passwords)
         setpasswordArray(passwords)
@@ -56,7 +56,7 @@ const Manager = () => {
             setform({ site: '', username: '', password: '' })
             setpasswordArray([...passwordArray, { ...form, id: uuidv4() }])
             // localStorage.setItem('passwords', JSON.stringify([...passwordArray, { ...form, id: uuidv4() }]))
-            await fetch('http://localhost:3000/', { method: 'POST', body: JSON.stringify({ ...form, id: uuidv4() }), headers: { "Content-Type": "application/json" } })
+            await fetch('https://pass-op-mongo-api.vercel.app/', { method: 'POST', body: JSON.stringify({ ...form, id: uuidv4() }), headers: { "Content-Type": "application/json" } })
 
             // console.log([...passwordArray, form])
 
@@ -94,7 +94,7 @@ const Manager = () => {
         if (confirm) {
             setpasswordArray(passwordArray.filter(item => item.id !== id))
             // localStorage.setItem('passwords', JSON.stringify(passwordArray.filter(item => item.id !== id)))
-            let res = await fetch('http://localhost:3000/', { method: 'DELETE', body: JSON.stringify({ id }), headers: { "Content-Type": "application/json" } })
+            let res = await fetch('https://pass-op-mongo-api.vercel.app/', { method: 'DELETE', body: JSON.stringify({ id }), headers: { "Content-Type": "application/json" } })
         }
         // console.log([...passwordArray, form])
     }
@@ -103,7 +103,7 @@ const Manager = () => {
         setpasswordArray(passwordArray.filter(item => item.id !== id))
         // localStorage.setItem('passwords', JSON.stringify([...passwordArray, { ...form, id: uuidv4() }]))
         // console.log([...passwordArray, form])
-        await fetch('http://localhost:3000/', { method: 'DELETE', body: JSON.stringify({ id: form.id }), headers: { "Content-Type": "application/json" } })
+        await fetch('https://pass-op-mongo-api.vercel.app/', { method: 'DELETE', body: JSON.stringify({ id: form.id }), headers: { "Content-Type": "application/json" } })
     }
 
     const handleChange = (e) => {

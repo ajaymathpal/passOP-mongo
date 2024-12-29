@@ -32,7 +32,7 @@ const app = express()
 const port = process.env.PORT || 3000
 app.use(bodyParser.json())
 app.use(cors({
-    origin: ["https://pass-op-mongo-api.vercel.app/"],
+    origin: [""],
     methods: ["GET", "POST", "DELETE"],
     credentials : true
 }))
